@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
-app.config.from_pyfile('config.cfg')
+app.config.from_pyfile('config.py')
 
 db = SQLAlchemy(app)
 
@@ -14,6 +14,7 @@ class Todo(db.Model):
 
 @app.route('/')
 def index():
+    print(url_for('static', filename='todo.db'))
     todos = Todo.query.all()
     return render_template('index.html', todos=todos)
 
