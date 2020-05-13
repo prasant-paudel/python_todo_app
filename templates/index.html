@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Python ToDo App</title>
+</head>
+<body>
+    <h1>Todo List</h1>
+    <div>Add a new todo item:
+        <form action="{{ url_for('add') }}" method="POST">
+            <input type="text" name="todoitem">
+            <input type="submit" value="Add">
+        </form>
+        <div>
+            <form action="{{ url_for('update') }}" method="POST">
+                <ul>{% for todo in todos %}
+                    <li style="font-size: 30pt"><input name="{{ todo.id }}" type="checkbox">{{ todo.text }}</li>
+                    {% endfor %}
+                </ul>
+                <input type="submit" value="Update">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
