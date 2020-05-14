@@ -16,11 +16,7 @@ class Todo(db.Model):
 @app.route('/')
 def index():
     todos = Todo.query.all()
-    r = db.engine.execute('select max(id) from todo')
-    global id_max
-    id_max = 0
-    for x in r:
-        id_max = x[0]
+    
 
     return render_template('index.html', todos=todos)
 
@@ -35,8 +31,15 @@ def add():
 def update():
     print('\n', request.form, '\n')
     # print(request.form['1'])
+
+    # detecting max id
+    r = db.engine.execute('select max(id) from todo')
     global id_max
-    for id in range(1, id_max):
+    id_max = 0
+    for x in r:
+        id_max = x[0]
+    
+    for id in range(1, id_max+1):
         try:
             value = request.form[f'{id}']
             if str(value) == 'on':
@@ -51,8 +54,12 @@ def update():
                 print('Status of', id, end=': ')
                 print(Todo.query.all()[id-1].complete)
                 
+
+                
         except:
-            db.engine.execute(f'update todo set complete=1 where id={id};')
+            db.engine.execute(f'update todo set complete=0 where id={id};')
+            # db.engine.execute(f'update todo set complete=0 where id=1;')
+            print(id, id_max)
             continue
 
 
