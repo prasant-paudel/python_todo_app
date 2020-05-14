@@ -14,19 +14,49 @@
 .flex{display: flex;}
 
 /* special classes */
-section{background: blueviolet; min-height: 600px; min-width: 345px; max-width: 500px;}
-#top{background: burlywood; min-height: 50px; margin-bottom: 10px}
+section{
+    background: #8338ec; 
+    min-width: 345px; max-width: 500px;
+    padding-bottom: 10px; margin: 50px 10px 30px 10px;
+    border-radius: 5px;
+}
+#top{background: #ffbe0b; min-height: 50px; margin-bottom: 10px; border-radius: 5px 5px 0px 0px;}
 div#row2 > div{margin: 10px;}
 #todo-container{
-    margin: 20px;
-    /* background: wheat; */
+    margin: 10px;
+    /* background-color: #fb5607; */
     min-height: 50px;
 }
 form{width: 100%; padding: 10px}
 li{
     display: flex; justify-content: space-between; 
-    margin: 5px 0px; padding: 3px 5px;
-    border: 1px solid; background: wheat; border-radius: 5px;
+    margin: 10px 0px; padding: 10px; box-shadow: 4px 4px 7px #000;
+    border: 1px solid; background: #ffbe0b; border-radius: 12px;
 }
-p{width: 100%; text-align: left; padding: 0 5px 0 10px}
+p{width: 100%; text-align: left; padding: 4px 5px 0 10px}
 /* #checkbox {height: 20px; scale: 1.5; margin-left: 5px} */
+
+#input-field > input{
+    height: 35px;
+    border: #3a86ff solid;
+    border-radius: 5px ;
+    padding: 0px 10px;
+    overflow: auto;
+}
+
+#update-btn, #add-item-btn > button, a > button {
+    border: solid lightcyan;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: lightcyan;
+}
+#add-item-btn > button{background-color: limegreen;}
+#update-btn{    background-color: #3a86ff;}
+a > button{    background-color: tomato;}
+
+button:hover{cursor: pointer; background: black; opacity: 0.6; }
+input[type='checkbox']:hover{
+    scale: 1.5; cursor: pointer;
+}
+
+hr{color: thistle}
