@@ -13,11 +13,16 @@
         <div>
             <form action="{{ url_for('update') }}" method="POST">
                 <ul>{% for todo in todos %}
-                    {% if todo.complete %}
-                    <li style="font-size: 30pt"><input name="{{ todo.id }}" type="checkbox" checked >{{ todo.text }}</li>
-                    {% else %}
-                    <li style="font-size: 30pt"><input name="{{ todo.id }}" type="checkbox" >{{ todo.text }}</li>
-                    {% endif %}
+                        <li style="font-size: 30pt">
+                            {% if todo.complete %}
+                            <input name="{{ todo.id }}" type="checkbox" checked >
+                            <i><del>{{ todo.text }}</del></i>
+                            {% else %}
+                            <input name="{{ todo.id }}" type="checkbox" >{{ todo.text }}
+                            {% endif %}
+                            <a href="{{url_for('delete')}}?id={{todo.id}}"><button type="button">Delete</button></a>
+                        </li>
+                        
                     {% endfor %}
                 </ul>
                 <input type="submit" value="Update">
