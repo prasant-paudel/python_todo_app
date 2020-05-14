@@ -4,6 +4,13 @@
     padding: 0;
 }
 
+body{
+    background: linear-gradient(
+        #8338ec, #3a86ff);
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 95vh;
+}
 
 /* common classes */
 .flex-centerred{
@@ -19,8 +26,12 @@ section{
     min-width: 345px; max-width: 500px;
     padding-bottom: 10px; margin: 50px 10px 30px 10px;
     border-radius: 5px;
+    box-shadow: 0px 0px 12px #00022249;
 }
-#top{background: #ffbe0b; min-height: 50px; margin-bottom: 10px; border-radius: 5px 5px 0px 0px;}
+
+#top{background: #ffbe0b; min-height: 50px; 
+    margin-bottom: 10px; border-radius: 5px 5px 0px 0px;
+}
 div#row2 > div{margin: 10px;}
 #todo-container{
     margin: 10px;
@@ -33,7 +44,7 @@ li{
     margin: 10px 0px; padding: 10px; box-shadow: 4px 4px 7px #000;
     border: 1px solid; background: #ffbe0b; border-radius: 12px;
 }
-p{width: 100%; text-align: left; padding: 4px 5px 0 10px}
+p{width: 100%; text-align: left; padding: 4px 0 0 10px; overflow: auto}
 /* #checkbox {height: 20px; scale: 1.5; margin-left: 5px} */
 
 #input-field > input{
@@ -51,8 +62,8 @@ p{width: 100%; text-align: left; padding: 4px 5px 0 10px}
     color: lightcyan;
 }
 #add-item-btn > button{background-color: limegreen;}
-#update-btn{    background-color: #3a86ff;}
-a > button{    background-color: tomato;}
+#update-btn{background-color: #3a86ff;}
+a > button{background-color: tomato;}
 
 button:hover{cursor: pointer; background: black; opacity: 0.6; }
 input[type='checkbox']:hover{
@@ -60,3 +71,13 @@ input[type='checkbox']:hover{
 }
 
 hr{color: thistle}
+
+a#github {display: flex; align-items: center;width: 260px;color: lavender;}
+#github > i{font-size: 70px;}
+#github > p{font-size: 16px;}
+
+a#weather-app{height: 50px; display: flex; width: 145px; font-size: 12px; padding-top:10px}
+img{height: 100%;}
+#weather-app{color:white; text-decoration: none;}
+
+#weather-app:hover, #github:hover{border: 1px solid thistle; border-radius: 7px;}

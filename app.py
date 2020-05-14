@@ -16,9 +16,7 @@ class Todo(db.Model):
 @app.route('/')
 def index():
     todos = Todo.query.all()
-    
-    return render_template('app.html', todos=todos)
-    # return render_template('index.html', todos=todos)
+    return render_template('index.html', todos=todos)
 
 @app.route('/add', methods=['POST'])
 def add():
@@ -30,7 +28,6 @@ def add():
 @app.route('/update', methods=['POST'])
 def update():
     print('\n', request.form, '\n')
-    # print(request.form['1'])
 
     # detecting max id
     r = db.engine.execute('SELECT MAX(id) FROM todo')

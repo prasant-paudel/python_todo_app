@@ -1,33 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Python ToDo App</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="../static/style.css"> -->
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <h1>Todo List</h1>
-    <div>Add a new todo item:
+    <center>
+    <section>
+        <div id="top" class="flex-centerred"><h3>Flask Project - TODO App</h3></div>
+       
+        <!-- Form 1 -> to enter list item -->
         <form action="{{ url_for('add') }}" method="POST">
-            <input type="text" name="todoitem">
-            <input type="submit" value="Add">
+            <div id='row2' class="flex-centerred">
+                <div id="input-field">
+                    <input type="text" name="todoitem" height="35px" placeholder="New TODO item ...">
+                </div>
+                <div id="add-item-btn"><button type="submit">Add</button></div>
+            </div>
         </form>
-        <div>
+        <div id="todo-container" class="flex">
+            <!-- Form 2 -> to update and delete items -->
             <form action="{{ url_for('update') }}" method="POST">
-                <ul>{% for todo in todos %}
-                        <li style="font-size: 30pt">
-                            {% if todo.complete %}
-                            <input name="{{ todo.id }}" type="checkbox" checked >
+                <ul> {% for todo in todos %}
+                        <li>
+                            {% if todo.complete %} 
+                            <input id="checkbox" name="{{ todo.id }}" type="checkbox" checked >
                             <i><del>{{ todo.text }}</del></i>
                             {% else %}
-                            <input name="{{ todo.id }}" type="checkbox" >{{ todo.text }}
+                            <input name="{{ todo.id }}" type="checkbox"> <p>{{ todo.text }}</p>
                             {% endif %}
                             <a href="{{url_for('delete')}}?id={{todo.id}}"><button type="button">Delete</button></a>
                         </li>
-                        
                     {% endfor %}
                 </ul>
-                <input type="submit" value="Update">
+                <br><hr>
+                <button id="update-btn" type="submit" style="margin-top: 10px;">Update</button>
             </form>
         </div>
-    </div>
+            <!-- my github link -->
+        <div style="display: flex; justify-content: space-between; padding: 10px;">
+            <a id="github" href="http://github.com/prasant7878">
+                <i class="fa fa-github-square" aria-hidden="true"></i>
+                <p>git@Prasant7878</p>
+            </a>
+            <a id="weather-app" href="prash-weather-app.herokuapp.com">
+                <img src="{{url_for('static', filename='weather-app.svg')}}">
+                <p>Also check my Weather App in Flask</p>
+            </a>
+        </div>
+    </section>
+    </center>
 </body>
 </html>
