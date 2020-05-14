@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 
+
 app = Flask(__name__)
 
 app.config.from_pyfile('config.py')
@@ -14,7 +15,6 @@ class Todo(db.Model):
 
 @app.route('/')
 def index():
-    print(url_for('static', filename='todo.db'))
     todos = Todo.query.all()
     return render_template('index.html', todos=todos)
 
@@ -28,6 +28,22 @@ def add():
 @app.route('/update', methods=['POST'])
 def update():
     print('\n', request.form, '\n')
+    # print(request.form['1'])
+
+    for id in range(5):
+        try:
+            value = request.form[f'{id}']
+            if str(value) == 'on':
+                print('Status of', id, end=': ')
+                print(Todo.query.all()[id-1].complete)
+
+                
+
+        except:
+            continue
+
+
+
     return redirect(url_for('index'))
 
 if __name__ == '__main__':
